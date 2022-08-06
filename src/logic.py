@@ -16,11 +16,13 @@ def get_info() -> dict:
 def choose_move(data: dict) -> str:
   my_snake = data["you"]
   my_body = my_snake["body"]
-
+  food_list = data["food"]
+  
   possible_moves = ["up", "down", "left", "right"]
   possible_moves = _avoid_my_neck(my_body, possible_moves)
   possible_moves = avoid_walls(data['board']['height'], data['board']['width'], my_body, possible_moves)
   possible_moves = avoid_self(my_body, possible_moves)
+  possible_moves = seek_the_parm(my_body, food_list)
   if not possible_moves:
     move = "up"
   else:
@@ -91,7 +93,25 @@ def _avoid_my_neck(my_body: dict, possible_moves: List[str]) -> List[str]:
       possible_moves.remove("up")
   return possible_moves
 
-def approach_food(my_body: dict, possible_moves: List[str]) -> List[str]):
+def seek_the_parm(my_body: dict, food_list: dict, possible_moves: List[str]) -> List[str]:
   my_head = my_body[0]
   
+  if my_head["x"] < food_list["x"]:
+    print("food is to the left, he travels")
+    possible_moves.remove("up", "down", "right")
+  if my_head["x"] > food_list["x"]:
+    print("food is to the right, he travels")
+    possible_moves.remove("up", "down", "left")
+  if my_head["y"] < food_list["y"]:
+    print("food is below, he travels")
+    possible_moves.remove("up", "left", "right")
+  if my_head["y"] > food_list["y"]:
+    print("food is above, he travels")
+
+def health_critical(my_body: dict, possible_moves: List[str]) -> List[str]:
+  my_head = my_body[0]
+  health = data["health"]
   
+  if health 
+  
+
