@@ -17,7 +17,6 @@ def handle_info():
     See https://docs.battlesnake.com/guides/getting-started#step-4-register-your-battlesnake
     """
     print("INFO")
-    print("hon hon hon stinky cheese")
     return logic.get_info()
 
 

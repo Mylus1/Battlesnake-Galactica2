@@ -8,14 +8,13 @@ def get_info() -> dict:
         "apiversion": "1",
         "author": "Mylus1",
         "color": "#E80978",
-        "head": "bendr",
-        "tail": "sharp",
+        "head": "villan",
+        "tail": "hook",
     }
 
 
 def choose_move(data: dict) -> str:
   my_snake = data["you"]
-  my_head = my_snake["head"]
   my_body = my_snake["body"]
 
   possible_moves = ["up", "down", "left", "right"]
@@ -34,7 +33,6 @@ def choose_move(data: dict) -> str:
 
 def avoid_walls(board_height: int, board_width: int, my_body: dict, possible_moves: List[str]) -> List[str]:
   my_head = my_body[0]
-  my_neck = my_body[1]
   if my_head["y"] == board_height-1 and "up" in possible_moves:
     print("we're on the top row, removing up")
     possible_moves.remove("up")
@@ -93,3 +91,7 @@ def _avoid_my_neck(my_body: dict, possible_moves: List[str]) -> List[str]:
       possible_moves.remove("up")
   return possible_moves
 
+def approach_food(my_body: dict, possible_moves: List[str]) -> List[str]):
+  my_head = my_body[0]
+  
+  
